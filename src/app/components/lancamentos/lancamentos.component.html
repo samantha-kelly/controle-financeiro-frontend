@@ -1,0 +1,76 @@
+<app-header [title]="'Lancamentos'"></app-header>
+
+
+<form class="form-container" (ngSubmit)="onSubmit(lancamentoForm)" #lancamentoForm="ngForm">
+  <mat-form-field>
+    <input id="nome-lancamento" autofocus matInput placeholder="Nome" name="nome" [(ngModel)]="lancamento.nome"
+      required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select id="select-contas" placeholder="Conta" [(ngModel)]="lancamento.idConta" name="idConta" required>
+      <mat-option [value]="undefined">Selecione</mat-option>
+      <mat-option *ngFor="let conta of contas$ | async" [value]="conta.id">
+        {{ conta.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select id="select-categorias" placeholder="Categoria" [(ngModel)]="lancamento.idCategoria" name="idCategoria"
+      required>
+      <mat-option [value]="undefined">Selecione</mat-option>
+      <mat-option *ngFor="let categoria of categorias$ | async" [value]="categoria.id">
+        {{ categoria.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input id="data-lancamento" matInput [matDatepicker]="picker" placeholder="Data" name="data"
+      [(ngModel)]="lancamento.data" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input id="valor-lancamento" matInput type="number" placeholder="Valor" name="valor" [(ngModel)]="lancamento.valor"
+      required>
+  </mat-form-field>
+
+  <mat-checkbox id="lancamento-pago" name="pago" [(ngModel)]="lancamento.pago">Pago</mat-checkbox>
+
+  <button id="btn-add-lancamento" mat-raised-button color="primary"
+    type="submit">{{modo==='INCLUSAO'?'Adicionar':'Atualizar'}}</button>
+
+  <button mat-raised-button color="secondary" type="button" (click)="cancelar(lancamentoForm)">Cancelar</button>
+</form>
+
+<div>
+
+  <div class="item-list">
+    @for (l of lancamentos; track l.id) {
+
+    <mat-card class="list-line">
+      <div class="item-value">{{l.nome}}</div>
+      <div class="item-value">{{l.nomeConta}}</div>
+      <div class="item-value">{{l.nomeCategoria}}</div>
+      <div class="item-value">{{l.data}}</div>
+      <div class="item-value">{{l.valor|currency: "BRL":"symbol-narrow":"1.2-2"}}</div>
+      <div class="item-value">{{l.pago|boolean}}</div>
+      <div class="item-value">
+        <button id="btn-edit-lancamento" color="primary" mat-icon-button (click)="editItem(l)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <div class="item-value">
+        <button id="btn-delete-lancamento" color="warn" mat-icon-button (click)="deleteItem(l)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+
+    </mat-card>
+    }
+  </div>
+</div>

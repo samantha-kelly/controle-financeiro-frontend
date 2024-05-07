@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+    <button id="main-menu" mat-icon-button [matMenuTriggerFor]="menu" class="example-icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button id="menu-contas" mat-menu-item routerLink="contas">
+            <mat-icon>wallet</mat-icon>
+            <span>Contas</span>
+        </button>
+        <button id="menu-categorias" mat-menu-item routerLink="categorias">
+            <mat-icon>category</mat-icon>
+            <span>Categorias</span>
+        </button>
+        <button id="menu-lancamentos" mat-menu-item routerLink="lancamentos">
+            <mat-icon>money</mat-icon>
+            <span>Lancamentos</span>
+        </button>
+    </mat-menu>
+
+    <span>Money App</span>
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button class="example-icon favorite-icon" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

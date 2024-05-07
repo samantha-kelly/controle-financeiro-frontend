@@ -1,0 +1,31 @@
+<app-header [title]="'Contas'"></app-header>
+
+
+<div class="form-container">
+    <mat-form-field>
+        <input autofocus matInput placeholder="Nome Conta" id="nome-conta" [(ngModel)]="novoItem.nome">
+    </mat-form-field>
+    <button id="btn-add-conta" mat-raised-button color="primary"
+        (click)="adicionarAtualizarItem()">{{modo==='INCLUSAO'?'Adicionar':'Atualizar'}}</button>
+    <button mat-raised-button color="secondary" (click)="cancelar()">Cancelar</button>
+</div>
+<div class="item-list">
+    @for (item of items; track item.id) {
+        <mat-card class="list-line">
+        <div class="item-value">{{item.nome}}</div>
+
+        <div class="item-value">
+            <button id="btn-edit-conta" color="primary" mat-icon-button (click)="editItem(item)">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+
+        <div class="item-value">
+            <button id="btn-delete-conta" color="warn" mat-icon-button (click)="deleteItem(item)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+    </mat-card>
+    }
+</div>

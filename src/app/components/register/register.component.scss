@@ -1,0 +1,17 @@
+ 
+  .input-field {
+    width: 300px; /* Define a largura dos campos */
+    margin: 10px auto; /* Centraliza os campos horizontalmente */
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza os elementos verticalmente */
+    height: 100vh; /* Define a altura do formulário para ocupar toda a altura da tela */
+  }
+  
+  .register-form button {
+    margin-top: 20px;
+  }

@@ -1,0 +1,18 @@
+<form class="login-form" (ngSubmit)="login()">
+    <mat-form-field class="input-field">
+        <input autofocus matInput placeholder="Login" [(ngModel)]="loginData.login" name="login" required>
+    </mat-form-field>
+
+    <mat-form-field class="input-field">
+        <input matInput type="password" placeholder="Password" [(ngModel)]="loginData.password" name="password"
+            required>
+    </mat-form-field>
+
+    <div>
+        <button class="login-button" mat-raised-button color="primary" type="submit">Login</button>
+    </div>
+    
+    <div>
+        <button class="register-button" mat-raised-button color="secondary" type="button" (click)="register()">Register</button>
+    </div>
+</form>

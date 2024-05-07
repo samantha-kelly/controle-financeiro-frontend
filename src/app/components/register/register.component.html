@@ -1,0 +1,10 @@
+<form class="register-form" (ngSubmit)="register()">
+  <mat-form-field class="input-field">
+    <input autofocus matInput placeholder="Login" [(ngModel)]="registerData.login" name="login" required>
+  </mat-form-field>
+
+  <mat-form-field class="input-field">
+    <input matInput type="password" placeholder="Password" [(ngModel)]="registerData.password" name="password" required>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Register</button>
+</form>

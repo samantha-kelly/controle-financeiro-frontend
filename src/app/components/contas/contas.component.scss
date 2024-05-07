@@ -1,0 +1,33 @@
+.form-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  margin-top: 20px; /* Adiciona margem no topo para separar da lista */
+}
+
+.item-list {
+  width: 100%;
+  display: grid;
+  row-gap: 1em;
+
+  .list-line {
+    display: grid;
+    grid-template-columns:  1fr 50px 50px;
+    grid-column-gap: 1em;
+    width: 30%;
+    justify-self: center;
+    align-items: center;
+
+  }
+}
+
+.item-value {
+  display: inline-block;
+  padding: 10px;
+
+  buttom {
+    text-align: center;
+  }
+}
